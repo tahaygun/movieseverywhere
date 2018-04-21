@@ -10,10 +10,11 @@ function Result(props) {
                             <ul className="moviebox padding0" key={movie.id}>
                               <div className="movieboxDiv">
                                 <div className="classDiv">
-                                <li className="title" >{movie.title}</li>
+                                <li className="title" ><p className='titletext'>{movie.title}</p></li>
                                 </div>
                                 <li><a target="_blank" title={"Search on Google about '"+movie.title+"'"} href={"https://www.google.com/search?q="+movie.title}><img className="poster" src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
-                                <li>Rank: {movie.vote_average} </li>
+                                <li> <button type="button" class="btn btn-warning btn-md">
+                                  <b>{movie.vote_average} ★</b></button></li>
                                 <li>Release Date: {movie.release_date} </li>
                                 <li className="genresInBox" >{props.getGenre(movie.genre_ids)}</li>
                                 <li className='overview' >{movie.overview} </li>

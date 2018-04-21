@@ -11,10 +11,11 @@ function Result(props) {
                             <ul className="moviebox padding0" key={movie.id}>
                               <div className="movieboxDiv">
                                 <div className="classDiv">
-                                <li className="title" >{movie.title}</li>
+                                <li className="title" ><p className='titletext'>{movie.title}</p></li>
                                 </div>
                                 <li><a target="_blank" title={"Search on Google about '"+movie.title+"'"} href={"https://www.google.com/search?q="+movie.title}><img className="poster" src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
-                                <li>Rank: {movie.vote_average} </li>
+                                <li> <button type="button" class="btn btn-warning btn-md">
+                                  <b>{movie.vote_average} ★</b></button></li>
                                 <li>Release Date: {movie.release_date} </li>
                                 <li className="genresInBox" >{props.getGenre(movie.genre_ids)}</li>
                                 <li className='overview' >{movie.overview} </li>
@@ -118,7 +119,9 @@ class Moviesofyear extends Component {
         this.getResults = this.getResults.bind(this);
         this.getGenre = this.getGenre.bind(this);
     }
-    
+    componentDidMount(){
+        this.getResults();
+    }
 
     getResults(event){
         api.getMoviesOfYear(this.state.year,1)
@@ -149,16 +152,18 @@ class Moviesofyear extends Component {
         }
         return (
             <div>
-                <form>
-                    <select onChange={this.changeYear}  name="year" id="year">
-                        { years.map(function(year) {
+                <div class="input-group">
+                    <select  onChange={this.changeYear}  class="custom-select" id="inputGroupSelect04">
+                    { years.map(function(year) {
                             return(
                             <option key={year} value={year}>{year}</option>
                         )
                         })}
                     </select>
-                </form>
-                <button onClick={this.getResults}>Show</button>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" onClick={this.getResults} type="button">Show</button>
+                    </div>
+                    </div>               
                 {this.state.result!==null &&<Result getGenre={this.getGenre} data={this.state.result.data.results} />}
             </div>
         );
