@@ -220,6 +220,8 @@ class Home extends Component {
                     </li>
                   </ul>         
                 </div>
+                <p className="copyrights" >made by <a target="_blank" href="https://github.com/tahaygun"> <b>@tahaygun</b></a></p>
+                <p className="copyrights" >thanks for <a target="_blank" href="https://www.themoviedb.org"> themoviedb </a></p>
             </div>
         );
     }
