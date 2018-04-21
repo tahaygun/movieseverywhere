@@ -1,19 +1,41 @@
 body{
-padding: 50px;
+padding: 40px 110px;
+background: rgba(236, 185, 143, 0.193);
+font-family: Montserrat;
 }
-.active {
-    color: red;
+body *{
+    border: solid 1px red;
+}
+.navButtons{
+    text-align: center;
+}
+.navButtons li{
+    list-style: none;
+    display: inline;
+    margin: 10px;
+    padding: 0px 20px;
+}
+.navButtons li .btn{
+    padding: 10px 50px;
+    font-size: 17px;
+    font-weight: bold;
+    background: rgb(11, 207, 229);
+}
+.active{
+    background: rgb(34, 145, 214) !important;
+}
+.poster{
+    width: 200px;
+    min-height: 300px;
 }
 .title{
-    margin-top: 25px;
+    margin:auto;
     max-width: 250px;
+    min-height: 60px;
     word-wrap: break-word;
-    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
 }
-.classDiv{
-    height: 70px;
-}
+
 .genresDiv{
     text-align: center;
 }
@@ -29,37 +51,72 @@ padding: 50px;
    cursor: pointer;
    font-weight: bold;
    font-size: 14px;
-   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-   
+   font-family: Montserrat;
+}
+.display-4{
+    text-align: center;
 }
 .padding0{
     padding: 0px;
 }
-.pagination{
+.pagination ul{
+    list-style: none;
+    padding: 0px;
     margin: auto;
+    width: 300px;
+    margin-bottom: 60px;
+}
+.pagination ul li{
+    margin: auto;
+    text-align: center;
+}
+.form-control{
+    width: 220px;
+    margin-left: 10px;
+}
+.pageinput{
+    display: flex;
+    text-align: center;
+    margin: auto;
+}
+.pageinput .btn{
+    margin: 5px;
+}
+.nextButton{
+    float: right;
+    min-width: 130px;
 }
 .moviebox{
     display: inline-block;
     vertical-align: top;
-    margin-bottom: 20px;
+    margin: 20px 10px;
     list-style: none;
+}
+.movieboxDiv{
+    width: 280px;
+    height: 680px;
 }
 .genresInBox{
     max-width: 230px;
+    height: 45px;
+    margin: auto;
     padding: 5px 0px;
     font-size: 13px;
-    color: rgb(89, 168, 110)
+    color: rgb(255, 102, 0);
 }
 .overview{
-    max-width: 230px;
-    max-height:220px;
+    max-width: 210px;
+    max-height:210px;
     word-wrap: break-word;
     overflow: hidden;
-    text-align: start;
+    text-align: justify;
     padding-right: 10px;
+    margin: auto;
+    font-size: 15px;
 }
 .overview:hover{
     overflow: auto;
+ 
     
 }
 .resultContainer{
@@ -70,8 +127,11 @@ padding: 50px;
 }
 
 .btn-primary{
-    margin: 15px;
-    margin-bottom: 100px;
+    margin: 10px;
+}
+
+.pagebuttons{
+    display: flex;
 }
 
 /* width */

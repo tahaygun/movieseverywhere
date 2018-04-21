@@ -8,14 +8,16 @@ function Result(props) {
                     {props.data.map(function(movie) {
                         return(
                             <ul className="moviebox padding0" key={movie.id}>
+                              <div className="movieboxDiv">
                                 <div className="classDiv">
                                 <li className="title" >{movie.title}</li>
                                 </div>
-                                <li><a target="_blank" title={"Search on Google about '"+movie.title+"'"} href={"https://www.google.com/search?q="+movie.title}><img src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
-                                <li>{movie.vote_average} </li>
-                                <li>{movie.release_date} </li>
+                                <li><a target="_blank" title={"Search on Google about '"+movie.title+"'"} href={"https://www.google.com/search?q="+movie.title}><img className="poster" src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
+                                <li>Rank: {movie.vote_average} </li>
+                                <li>Release Date: {movie.release_date} </li>
                                 <li className="genresInBox" >{props.getGenre(movie.genre_ids)}</li>
                                 <li className='overview' >{movie.overview} </li>
+                                </div>
                             </ul>
                         )
                     })}
@@ -41,7 +43,6 @@ function Filtering(props) {
 }
 
 
-
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -50,6 +51,7 @@ class Home extends Component {
             page:1,
             genre: null,
             genreName:null,
+            pageinput:1,
             genres: [
                 {
                     "id": 28,
@@ -133,6 +135,8 @@ class Home extends Component {
         this.changePage = this.changePage.bind(this);
         this.getGenre = this.getGenre.bind(this);
         this.genreChanger = this.genreChanger.bind(this);
+        this.pageChangeHandler = this.pageChangeHandler.bind(this);
+        this.changePageFromInput = this.changePageFromInput.bind(this);
     }
     
      
@@ -140,7 +144,7 @@ class Home extends Component {
         var result='';
         array.map(function(id){
           this.state.genres.map(function(genre){
-            genre.id=== id && (result += genre.name+' ')
+          return  (genre.id=== id && (result += genre.name+' '))
           })
         }.bind(this))
         return result      
@@ -153,11 +157,18 @@ class Home extends Component {
 
     changePage(number){
         this.setState({
-                page: this.state.page+number
+                page: (this.state.page+number)
             }, ()=>{this.getPopularMovies()}
         )
       
     }
+    changePageFromInput(number){
+      this.setState({
+              page: number
+          }, ()=>{this.getPopularMovies()}
+      )
+    
+  }
 
     getPopularMovies(){
         api.getPopularMovies(this.state.page,this.state.genre).then(function(result) {
@@ -168,6 +179,10 @@ class Home extends Component {
             })
         }.bind(this))
         
+    }
+    pageChangeHandler(event){
+      var page= event.target.value;
+      this.setState({pageinput: Number(page)});
     }
 
     genreChanger(genre){
@@ -182,15 +197,27 @@ class Home extends Component {
         return (
             <div>
                 <Filtering selectedGenre={this.state.genreName} changeGenre={this.genreChanger} />
-               <h2 className="display-4" >The most popular movies:</h2> 
+               <h2 className="display-4" >The most popular movies</h2> 
                 <ul className="padding0">
                     {this.state.movies!==null &&<Result getGenre={this.getGenre} data={this.state.movies.data.results} />}
                 </ul>
                 <div className="pagination" >
-                <p>Page {this.state.page}</p>
-                {this.state.page>1&& <button className="btn btn-primary" onClick={this.changePage.bind(null,-1)} >Previus Page</button> } 
-                {this.state.page>2 && <button className="btn btn-primary" onClick={this.changePage.bind(null,-[this.state.page-1])} >1</button> } 
-                <button className="btn btn-primary"  onClick={this.changePage.bind(null,1)} >Next Page</button>
+                  <ul>
+                    <li className="pagedisplay" >
+                      <p><b>Page  {this.state.page}</b></p>
+                    </li>
+                    <li>
+                      <div className="pageinput" >
+                          <input className="form-control" onChange={this.pageChangeHandler} defaultValue={this.state.page} type="number"/>
+                          <button className='btn' onClick={this.changePageFromInput.bind(null, this.state.pageinput)} >Go</button>
+                      </div>
+                    </li>
+                    <li className="pagebuttons">
+                         {this.state.page>1 ? <button className="btn btn-primary" onClick={this.changePage.bind(null,-1)} >Previus Page</button> : <button className="btn btn-primary" disabled onClick={this.changePage.bind(null,-1)} >Previus Page</button> } 
+                         {/* {this.state.page>2 && <button className="btn btn-primary" onClick={this.changePage.bind(null,-[this.state.page-1])} >1</button> }  */}
+                         <button className="btn btn-primary nextButton"  onClick={this.changePage.bind(null,1)} >Next Page</button>
+                    </li>
+                  </ul>         
                 </div>
             </div>
         );

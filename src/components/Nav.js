@@ -3,19 +3,19 @@ import { NavLink } from 'react-router-dom';
 class Nav extends Component {
     render() {
         return (
-            <ul className='padding0' >
+            <ul className='navButtons padding0' >
                 <li>
                     <NavLink
-                    exact activeClassName="active" to="/"
+                    exact className="btn btn-info" activeClassName="active" to="/"
                     > 
                     Home
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                    exact activeClassName="active" to="/bestmoviesofyear"
+                    exact className="btn btn-info" activeClassName="active" to="/bestmoviesofyear"
                     > 
-                    Best Movies of Year
+                    Best 20 Movies of Year
                     </NavLink>
                 </li>
             </ul>

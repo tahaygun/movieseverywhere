@@ -8,14 +8,17 @@ function Result(props) {
                 <ul className="padding0" >
                     {props.data.map(function(movie) {
                         return(
-                            <ul className="moviebox" key={movie.id}>
+                            <ul className="moviebox padding0" key={movie.id}>
+                              <div className="movieboxDiv">
                                 <div className="classDiv">
                                 <li className="title" >{movie.title}</li>
                                 </div>
-                                <li><a target="_blank" title={'Search on google: '+movie.title} href={"https://www.google.com/search?q="+movie.title}><img src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
-                                <li>{movie.vote_average} </li>
-                                <li>{movie.release_date} </li>
+                                <li><a target="_blank" title={"Search on Google about '"+movie.title+"'"} href={"https://www.google.com/search?q="+movie.title}><img className="poster" src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt={movie.title}/></a></li>
+                                <li>Rank: {movie.vote_average} </li>
+                                <li>Release Date: {movie.release_date} </li>
+                                <li className="genresInBox" >{props.getGenre(movie.genre_ids)}</li>
                                 <li className='overview' >{movie.overview} </li>
+                                </div>
                             </ul>
                         )
                     })}
@@ -31,10 +34,89 @@ class Moviesofyear extends Component {
         this.state={
             page:1,
             year:2018,
-            result:null
+            result:null,
+            genres: [
+                {
+                    "id": 28,
+                    "name": "Action"
+                  },
+                  {
+                    "id": 12,
+                    "name": "Adventure"
+                  },
+                  {
+                    "id": 16,
+                    "name": "Animation"
+                  },
+                  {
+                    "id": 35,
+                    "name": "Comedy"
+                  },
+                  {
+                    "id": 80,
+                    "name": "Crime"
+                  },
+                  {
+                    "id": 99,
+                    "name": "Documentary"
+                  },
+                  {
+                    "id": 18,
+                    "name": "Drama"
+                  },
+                  {
+                    "id": 10751,
+                    "name": "Family"
+                  },
+                  {
+                    "id": 14,
+                    "name": "Fantasy"
+                  },
+                  {
+                    "id": 36,
+                    "name": "History"
+                  },
+                  {
+                    "id": 27,
+                    "name": "Horror"
+                  },
+                  {
+                    "id": 10402,
+                    "name": "Music"
+                  },
+                  {
+                    "id": 9648,
+                    "name": "Mystery"
+                  },
+                  {
+                    "id": 10749,
+                    "name": "Romance"
+                  },
+                  {
+                    "id": 878,
+                    "name": "Science Fiction"
+                  },
+                  {
+                    "id": 10770,
+                    "name": "TV Movie"
+                  },
+                  {
+                    "id": 53,
+                    "name": "Thriller"
+                  },
+                  {
+                    "id": 10752,
+                    "name": "War"
+                  },
+                  {
+                    "id": 37,
+                    "name": "Western"
+                  }
+              ]
         }
         this.changeYear = this.changeYear.bind(this);   
         this.getResults = this.getResults.bind(this);
+        this.getGenre = this.getGenre.bind(this);
     }
     
 
@@ -50,6 +132,15 @@ class Moviesofyear extends Component {
         this.setState({year:year})
     }
 
+    getGenre(array) {
+        var result='';
+        array.map(function(id){
+          this.state.genres.map(function(genre){
+          return  (genre.id=== id && (result += genre.name+' '))
+          })
+        }.bind(this))
+        return result      
+    }
 
     render() {
         var years = [];
@@ -68,7 +159,7 @@ class Moviesofyear extends Component {
                     </select>
                 </form>
                 <button onClick={this.getResults}>Show</button>
-                {this.state.result!==null &&<Result data={this.state.result.data.results} />}
+                {this.state.result!==null &&<Result getGenre={this.getGenre} data={this.state.result.data.results} />}
             </div>
         );
     }
