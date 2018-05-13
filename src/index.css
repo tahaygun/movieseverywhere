@@ -1,208 +1,239 @@
-body{
-padding: 40px 110px;
-background: rgba(203, 218, 123, 0.193);
-font-family: Montserrat;
+body {
+  padding: 40px 110px;
+  background: rgba(203, 218, 123, 0.193);
+  font-family: Montserrat;
 }
 /* body *{
     border: olive solid 0.2px;
 } */
-.classDiv{
-    height: 65px;
+.classDiv {
+  height: 65px;
 }
-.navButtons{
-    text-align: center;
+.navButtons {
+  text-align: center;
 }
-.input-group{
-    margin: auto;
-    width: 500px;
+.input-group {
+  margin: auto;
+  width: 500px;
 }
-.navButtons li{
-    list-style: none;
-    display: inline;
-    margin: 10px;
-    padding: 0px 20px;
+.navButtons li {
+  list-style: none;
+  display: inline;
+  margin: 10px;
+  padding: 0px 20px;
 }
-.navButtons li .btn{
-    padding: 10px 50px;
-    font-size: 17px;
-    font-weight: bold;
-    background: rgb(11, 207, 229);
+.navButtons li .btn {
+  padding: 10px 50px;
+  font-size: 17px;
+  font-weight: bold;
+  background: rgb(11, 207, 229);
 }
-.active{
-    background: rgb(34, 145, 214) !important;
+.active {
+  background: rgb(34, 145, 214) !important;
 }
-.poster{
-    width: 200px;
-    min-height: 300px;
-    border-radius: 15px;
+.poster {
+  width: 200px;
+  min-height: 300px;
+  border-radius: 15px;
 }
-.title{
-    margin:auto;
-    font-weight: bold;
-  
-    max-width: 250px;
-    min-height: 60px;
-    word-wrap: break-word;
-    font-size: 20px;
+.title {
+  margin: auto;
+  font-weight: bold;
+
+  max-width: 250px;
+  min-height: 60px;
+  word-wrap: break-word;
+  font-size: 20px;
 }
-.titletext{
-    background: rgba(255, 212, 20, 0.179);
-    border-radius: 20px;
+.titletext {
+  background: rgba(255, 212, 20, 0.179);
+  border-radius: 20px;
 }
-ul li .btn-md{
-    margin: 5px;
-    cursor: default !important;
+ul li .btn-md {
+  margin: 5px;
+  cursor: default !important;
 }
-.genresDiv{
-    text-align: center;
-} 
-.genresNav{
-    list-style: none;
-    margin: auto;
-    padding: 0px;
-    width: 900px;
-    
+.genresDiv {
+  text-align: center;
 }
-.genresNav li{
-   margin: 10px;
-   display: inline-block;
-   cursor: pointer;
-   font-weight: bold;
-   font-size: 14px;
-   font-family: Montserrat;
+.genresNav {
+  list-style: none;
+  margin: auto;
+  padding: 0px;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.display-4{
-    text-align: center;
+.genresNav .genreslink {
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-family: Montserrat;
 }
-.padding0{
-    padding: 0px;
+.display-4 {
+  text-align: center;
 }
-.pagination ul{
-    list-style: none;
-    padding: 0px;
-    margin: auto;
-    width: 300px;
-    margin-bottom: 60px;
+.padding0 {
+  padding: 0px;
 }
-.pagination ul li{
-    margin: auto;
-    text-align: center;
+.pagination ul {
+  list-style: none;
+  padding: 0px;
+  margin: auto;
+  width: 300px;
+  margin-bottom: 60px;
 }
-.form-control{
-    width: 220px;
-    margin-left: 10px;
+.pagination ul li {
+  margin: auto;
+  text-align: center;
 }
-.pageinput{
-    display: flex;
-    text-align: center;
-    margin: auto;
+.form-control {
+  width: 220px;
+  margin-left: 10px;
 }
-.pageinput .btn{
-    margin: 5px;
+.pageinput {
+  display: flex;
+  text-align: center;
+  margin: auto;
 }
-.nextButton{
-    float: right;
-    min-width: 130px;
+.pageinput .btn {
+  margin: 5px;
 }
-.moviebox{
-    display: inline-block;
-    vertical-align: top;
-    margin: 20px 10px;
-    list-style: none;
+.nextButton {
+  float: right;
+  min-width: 130px;
 }
-.movieboxDiv{
-    width: 280px;
-    height: 680px;
+.moviebox {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px 10px;
+  list-style: none;
 }
-.genresInBox{
-    max-width: 230px;
-    height: 45px;
-    margin: auto;
-    padding: 5px 0px;
-    font-size: 13px;
-    color: rgb(241, 74, 74);
+.movieboxDiv {
+  width: 280px;
+  height: 680px;
 }
-.overview{
-    max-width: 210px;
-    max-height:190px;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-align: justify;
-    padding-right: 10px;
-    margin: auto;
-    font-size: 15px;
+.genresInBox {
+  max-width: 230px;
+  height: 45px;
+  margin: auto;
+  padding: 5px 0px;
+  font-size: 13px;
+  color: rgb(241, 74, 74);
 }
-.overview:hover{
-    overflow: auto;
- 
-    
+.overview {
+  max-width: 210px;
+  max-height: 190px;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-align: justify;
+  padding-right: 10px;
+  margin: auto;
+  font-size: 15px;
 }
-.resultContainer{
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.overview:hover {
+  overflow: auto;
+}
+.resultContainer {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.btn-primary{
-    margin: 10px;
+.btn-primary {
+  margin: 10px;
 }
 
-.pagebuttons{
-    display: flex;
+.pagebuttons {
+  display: flex;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 15px;
+  width: 15px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 40px;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 40px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(38, 255, 0, 0.221); 
-    border-radius: 40px;
+  background: rgba(38, 255, 0, 0.221);
+  border-radius: 40px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+  background: #b30000;
+}
+.goUp {
+  position: fixed;
+  right: 25px;
+  bottom: 20px;
+  opacity: 0.7;
+  color: red;
 }
 
-
-@media only screen and (max-width: 600px) {
-    .navButtons li .btn{
-        margin: 10px;
-        padding: 10px;
-        font-size: 17px;
-        font-weight: bold;
-        background: rgb(11, 207, 229);
-    }
-    .display-4{
-        font-size: 22px;
-    }
-    body {
-        text-align: center;
-    }
-    .pagination ul{
-        position: absolute;
-        right: 15px;
-    }
-}
-
-.copyrights{
-    font-size: 12px;
-    color: rgb(7, 7, 7);
-    width: 139px;
-    margin: auto;
+@media only screen and (max-width: 900px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .genresNav {
+    /* list-style: lower-roman; */
+    max-width: 300px;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .genresNav .genreslink {
+    margin: 10px 13px;
+    display: block;
+    cursor: pointer;
     font-weight: bold;
+    color: black;
+    font-size: 14px;
+  }
+  .navButtons li .btn {
+    text-align: center;
+    padding: 10px;
+    margin: 0 30px;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+    background: rgb(11, 207, 229);
+  }
+  .display-4 {
+    font-size: 22px;
+  }
+  body {
+    text-align: center;
+  }
 }
-.copyrights a{
-    font-size: 12px;
-    color: rgb(0, 0, 0);
+
+.copyrights {
+  font-size: 12px;
+  color: rgb(7, 7, 7);
+  width: 139px;
+  margin: auto;
+  display: block;
+  font-weight: bold;
+}
+.copyrights a {
+  margin-top: 30px;
+  font-size: 12px;
+  display: block;
+  color: rgb(0, 0, 0);
 }
