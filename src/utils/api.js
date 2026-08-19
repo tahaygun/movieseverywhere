@@ -1,6 +1,6 @@
-var axios = require('axios');
+import axios from "axios";
 
-module.exports={
+const api = {
     getPopularMovies: function(page,genre) {
         if(genre===null){
             return  axios.get("https://api.themoviedb.org/3/discover/movie?api_key=fcc099706b1d178f223fb5741f1b8c01&sort_by=popularity.desc&vote_count.gte=300&include_adult=false&page="+page)
@@ -21,4 +21,6 @@ module.exports={
             return respond
         })
       }
-} 
+}
+
+export default api;

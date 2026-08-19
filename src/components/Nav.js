@@ -6,15 +6,15 @@ class Nav extends Component {
             <ul className='navButtons padding0' >
                 <li>
                     <NavLink
-                    exact className="btn btn-info" activeClassName="active" to="/"
-                    > 
+                    end className={({ isActive }) => "btn btn-info" + (isActive ? " active" : "")} to="/"
+                    >
                     Home
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                    exact className="btn btn-info" activeClassName="active" to="/bestmoviesofyear"
-                    > 
+                    end className={({ isActive }) => "btn btn-info" + (isActive ? " active" : "")} to="/bestmoviesofyear"
+                    >
                     Best 20 Movies of Year
                     </NavLink>
                 </li>
