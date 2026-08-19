@@ -79,6 +79,42 @@ ul li .btn-md {
 .display-4 {
   text-align: center;
 }
+.browseHeader {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto 10px;
+  max-width: 1120px;
+  padding: 0 20px;
+}
+.browseHeader .display-4 {
+  margin: 0;
+}
+.eyebrow {
+  color: rgb(185, 57, 57);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  margin: 0 0 8px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.sortControls {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
+.sortControls label {
+  font-size: 14px;
+  font-weight: bold;
+}
+.sortSelect {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  font: inherit;
+  padding: 9px 32px 9px 10px;
+}
 .padding0 {
   padding: 0px;
 }
@@ -217,6 +253,16 @@ ul li .btn-md {
   }
   .display-4 {
     font-size: 22px;
+  }
+  .browseHeader {
+    align-items: center;
+    flex-direction: column;
+    gap: 18px;
+    padding: 0 10px;
+  }
+  .browseHeader .display-4,
+  .eyebrow {
+    text-align: center;
   }
   body {
     text-align: center;
