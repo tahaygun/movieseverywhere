@@ -57,7 +57,7 @@ class Moviesofyear extends Component {
     super(props);
     this.state = {
       page: 1,
-      year: 2018,
+      year: new Date().getFullYear(),
       result: null,
       genres: [
         {
@@ -174,7 +174,7 @@ class Moviesofyear extends Component {
 
   render() {
     var years = [];
-    for (let i = 2018; i > 1950; i--) {
+    for (let i = new Date().getFullYear(); i > 1950; i--) {
       years.push(i);
     }
     return (

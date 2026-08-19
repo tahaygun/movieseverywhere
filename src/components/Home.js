@@ -96,6 +96,25 @@ function Filtering(props) {
   );
 }
 
+function SortOptions(props) {
+  return (
+    <div className="sortControls">
+      <label htmlFor="movieSort">Sort by</label>
+      <select
+        id="movieSort"
+        value={props.value}
+        onChange={props.onChange}
+        className="sortSelect"
+      >
+        <option value="popularity.desc">Most popular</option>
+        <option value="vote_average.desc">Highest rated</option>
+        <option value="primary_release_date.desc">Newest releases</option>
+        <option value="primary_release_date.asc">Oldest releases</option>
+      </select>
+    </div>
+  );
+}
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -104,6 +123,7 @@ class Home extends Component {
       page: 1,
       genre: null,
       genreName: null,
+      sortBy: "popularity.desc",
       pageinput: 1,
       genres: [
         {
@@ -190,6 +210,7 @@ class Home extends Component {
     this.genreChanger = this.genreChanger.bind(this);
     this.pageChangeHandler = this.pageChangeHandler.bind(this);
     this.changePageFromInput = this.changePageFromInput.bind(this);
+    this.sortMovies = this.sortMovies.bind(this);
     document.title = `Movies Everywhere`;
   }
 
@@ -208,9 +229,9 @@ class Home extends Component {
   componentDidMount() {
     if (this.props.match.params.genre) {
       this.genreChanger(this.props.match.params.genre);
-      console.log(this.props.match.params.genre);
+    } else {
+      this.getPopularMovies();
     }
-    this.getPopularMovies();
   }
 
   changePage(number) {
@@ -235,16 +256,41 @@ class Home extends Component {
   }
 
   getPopularMovies() {
-    api.getPopularMovies(this.state.page, this.state.genre).then(
-      function(result) {
-        this.setState(function() {
-          return {
-            movies: result
-          };
-        });
-      }.bind(this)
-    );
+    api
+      .getPopularMovies(
+        this.state.page,
+        this.state.genre,
+        this.state.sortBy,
+        this.state.genre === null ? this.getRecentDateRange() : null
+      )
+      .then(
+        function(result) {
+          this.setState(function() {
+            return {
+              movies: result
+            };
+          });
+        }.bind(this)
+      );
     window.scrollTo(0, 0);
+  }
+
+  getRecentDateRange() {
+    const today = new Date();
+    const threeYearsAgo = new Date(today);
+    threeYearsAgo.setFullYear(today.getFullYear() - 3);
+
+    return {
+      from: threeYearsAgo.toISOString().slice(0, 10),
+      to: today.toISOString().slice(0, 10)
+    };
+  }
+
+  sortMovies(event) {
+    this.setState(
+      { sortBy: event.target.value, page: 1, pageinput: 1 },
+      this.getPopularMovies
+    );
   }
   pageChangeHandler(event) {
     var page = event.target.value;
@@ -269,7 +315,15 @@ class Home extends Component {
           selectedGenre={this.state.genreName}
           changeGenre={this.genreChanger}
         />
-        <h2 className="display-4">The most popular movies</h2>
+        <div className="browseHeader">
+          <div>
+            <p className="eyebrow">{this.state.genreName ? "Category" : "Fresh from TMDB"}</p>
+            <h2 className="display-4">
+              {this.state.genreName || "Movies from the last three years"}
+            </h2>
+          </div>
+          <SortOptions value={this.state.sortBy} onChange={this.sortMovies} />
+        </div>
         <ul className="padding0">
           {this.state.movies !== null && (
             <Result
