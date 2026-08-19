@@ -3,24 +3,28 @@ import Nav from "./Nav";
 import Home from "./Home";
 import "../index.css";
 import Moviesofyear from "./Moviesofyear";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Switch } from "react-router";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+
+function HomeWithParams(props) {
+  const params = useParams();
+  return <Home match={{ params }} {...props} />;
+}
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div>
           <Nav />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/genre/:genre" component={Home} />
-            <Route exact path="/bestmoviesofyear" component={Moviesofyear} />
+          <Routes>
+            <Route path="/" element={<HomeWithParams />} />
+            <Route path="/genre/:genre" element={<HomeWithParams />} />
+            <Route path="/bestmoviesofyear" element={<Moviesofyear />} />
             <Route
-              component={() => {
-                return <h3>404 not found, go play somewhere else dude..</h3>;
-              }}
+              path="*"
+              element={<h3>404 not found, go play somewhere else dude..</h3>}
             />
-          </Switch>
+          </Routes>
         </div>
       </BrowserRouter>
     );
