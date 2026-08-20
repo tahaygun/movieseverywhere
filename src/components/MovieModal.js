@@ -216,6 +216,16 @@ function MovieModal({ movie, onClose, onFavoriteToggle }) {
               </a>
 
               <a
+                href={`https://www.google.com/search?q=${encodeURIComponent(title + (releaseYear ? ` ${releaseYear}` : "") + " site:doesthedogdie.com")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-modal-action btn-does-the-dog-die"
+                title="Search Does the Dog Die?"
+              >
+                Does the Dog Die?
+              </a>
+
+              <a
                 href={`https://www.themoviedb.org/movie/${movie.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
