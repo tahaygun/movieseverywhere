@@ -202,7 +202,7 @@ function MovieModal({ movie, onClose, onFavoriteToggle }) {
               </button>
 
               <a
-                href={`https://www.google.com/search?q=${encodeURIComponent(title + " movie " + releaseYear)}`}
+                href={`https://www.google.com/search?q=${encodeURIComponent(title + (releaseYear ? ` ${releaseYear}` : ""))}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-modal-action btn-google"
